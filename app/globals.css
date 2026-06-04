@@ -27,6 +27,39 @@
   }
 }
 
+/* Запрет выделения и перетаскивания изображений */
+img, svg {
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+}
+
+/* Видимый индикатор фокуса для клавиатурной навигации */
+:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip-link — первый элемент в DOM, виден только при фокусе */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  background: var(--color-coral);
+  color: #fff;
+  padding: 0.5rem 1.25rem;
+  border-radius: 0 0 0.75rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 0;
+}
+
 /* Версия для слабовидящих (требование законодательства РФ) */
 html.a11y-mode {
   font-size: 150%;

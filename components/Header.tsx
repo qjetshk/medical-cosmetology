@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -24,25 +24,75 @@ export default function Header() {
   const [moreOpen, setMoreOpen] = useState(false);
   const pathname = usePathname();
   const moreRef = useRef<HTMLDivElement>(null);
+  const burgerRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const drawerRef = useRef<HTMLElement>(null);
 
+  // Закрыть всё при смене маршрута
   useEffect(() => {
     setMenuOpen(false);
     setMoreOpen(false);
   }, [pathname]);
 
+  // Escape закрывает всё, возвращает фокус на бургер
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { setMenuOpen(false); setMoreOpen(false); }
+      if (e.key === 'Escape') {
+        if (menuOpen) closeDrawer();
+        setMoreOpen(false);
+      }
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
-  }, []);
+  }, [menuOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Блокировать скролл страницы пока открыт drawer
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
+
+  // Когда drawer открывается — переместить фокус на кнопку закрытия
+  useEffect(() => {
+    if (menuOpen) {
+      const id = setTimeout(() => closeButtonRef.current?.focus(), 60);
+      return () => clearTimeout(id);
+    }
+  }, [menuOpen]);
+
+  // Focus trap внутри drawer'а
+  useEffect(() => {
+    if (!menuOpen || !drawerRef.current) return;
+
+    const drawer = drawerRef.current;
+    const getFocusable = () =>
+      Array.from(
+        drawer.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+
+    const handleTab = (e: KeyboardEvent) => {
+      if (e.key !== 'Tab') return;
+      const focusable = getFocusable();
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+
+    document.addEventListener('keydown', handleTab);
+    return () => document.removeEventListener('keydown', handleTab);
+  }, [menuOpen]);
+
+  const closeDrawer = useCallback(() => {
+    setMenuOpen(false);
+    requestAnimationFrame(() => burgerRef.current?.focus());
+  }, []);
 
   return (
     <>
@@ -57,7 +107,9 @@ export default function Header() {
             aria-label="Основная навигация"
           >
             {navLinks.map((link) => (
-              <Link key={link.href} href={link.href} className={linkClass(pathname === link.href)}>
+              <Link key={link.href} href={link.href} className={linkClass(pathname === link.href)}
+                aria-current={pathname === link.href ? 'page' : undefined}
+              >
                 {link.label}
               </Link>
             ))}
@@ -69,7 +121,9 @@ export default function Header() {
             aria-label="Основная навигация"
           >
             {PRIMARY_LINKS.map((link) => (
-              <Link key={link.href} href={link.href} className={linkClass(pathname === link.href)}>
+              <Link key={link.href} href={link.href} className={linkClass(pathname === link.href)}
+                aria-current={pathname === link.href ? 'page' : undefined}
+              >
                 {link.label}
               </Link>
             ))}
@@ -84,6 +138,7 @@ export default function Header() {
                 onClick={() => setMoreOpen((v) => !v)}
                 aria-expanded={moreOpen}
                 aria-haspopup="menu"
+                aria-label="Ещё разделы"
                 className={`px-3 py-1.5 rounded-lg text-sm font-medium tracking-wider transition-colors ${
                   moreOpen ? 'text-ink bg-line/50' : 'text-ink-muted hover:text-ink hover:bg-line/50'
                 }`}
@@ -106,6 +161,7 @@ export default function Header() {
                         key={link.href}
                         href={link.href}
                         role="menuitem"
+                        aria-current={pathname === link.href ? 'page' : undefined}
                         className={`block px-4 py-2.5 text-sm transition-colors ${
                           pathname === link.href
                             ? 'text-coral font-medium'
@@ -126,12 +182,14 @@ export default function Header() {
 
             {/* Кнопка бургера — мобильный */}
             <button
+              ref={burgerRef}
               onClick={() => setMenuOpen((v) => !v)}
               aria-expanded={menuOpen}
+              aria-controls="mobile-drawer"
               aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
               className="lg:hidden relative w-8 h-8 flex items-center justify-center rounded-lg hover:bg-line/50 transition-colors"
             >
-              <div className="relative w-5 h-3.5">
+              <div className="relative w-5 h-3.5" aria-hidden="true">
                 <span className={`absolute left-0 w-5 h-0.5 bg-ink rounded-full transition-all duration-200 ${menuOpen ? 'top-1.75 rotate-45' : 'top-0'}`} />
                 <span className={`absolute left-0 top-1.75 w-5 h-0.5 bg-ink rounded-full transition-opacity duration-200 ${menuOpen ? 'opacity-0' : ''}`} />
                 <span className={`absolute left-0 w-5 h-0.5 bg-ink rounded-full transition-all duration-200 ${menuOpen ? 'top-1.75 -rotate-45' : 'top-3.5'}`} />
@@ -145,42 +203,47 @@ export default function Header() {
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop — сильный блюр за drawer'ом */}
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35, ease: 'easeOut' }}
               className="fixed inset-0 z-90 backdrop-blur-2xl bg-ink/25 lg:hidden"
-              onClick={() => setMenuOpen(false)}
+              onClick={closeDrawer}
               aria-hidden="true"
             />
 
-            {/* Drawer — выезжает слева */}
+            {/* Drawer */}
             <motion.nav
+              id="mobile-drawer"
+              ref={drawerRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Навигация"
               initial={{ x: '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'spring', damping: 28, stiffness: 220, mass: 0.8 }}
               className="fixed top-0 left-0 bottom-0 z-100 w-72 bg-cream border-r border-line flex flex-col shadow-2xl lg:hidden"
-              aria-label="Мобильная навигация"
             >
               {/* Шапка drawer'а */}
               <div className="flex items-center justify-between px-5 h-16 border-b border-line shrink-0">
                 <Logo />
                 <button
-                  onClick={() => setMenuOpen(false)}
+                  ref={closeButtonRef}
+                  onClick={closeDrawer}
                   aria-label="Закрыть меню"
                   className="w-8 h-8 flex items-center justify-center rounded-lg text-ink-muted hover:text-ink hover:bg-line/50 transition-colors"
                 >
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                     <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/>
                   </svg>
                 </button>
               </div>
 
               {/* Ссылки со stagger-анимацией */}
-              <ul className="flex-1 overflow-y-auto py-3 px-3">
+              <ul className="flex-1 overflow-y-auto py-3 px-3" role="list">
                 {navLinks.map((link, i) => (
                   <motion.li
                     key={link.href}
@@ -190,6 +253,7 @@ export default function Header() {
                   >
                     <Link
                       href={link.href}
+                      aria-current={pathname === link.href ? 'page' : undefined}
                       className={`flex items-center px-4 py-3 rounded-xl text-sm transition-colors ${
                         pathname === link.href
                           ? 'text-coral font-medium bg-coral-light/40'

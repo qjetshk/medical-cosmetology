@@ -8,28 +8,35 @@ export default function Footer() {
       <div className="max-w-wrapper mx-auto px-4 md:px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
 
         {/* Реквизиты */}
-        <div className="space-y-2">
+        <address className="not-italic space-y-2">
           <p className="font-semibold text-ink">{owner.shortName}</p>
           <p>ОГРНИП: {owner.ogrnip}</p>
           <p>ИНН: {owner.inn}</p>
           <p>
-            Тел:{' '}
-            <a href={owner.phoneHref} className="hover:text-coral transition-colors">
+            <span className="sr-only">Телефон: </span>
+            <a
+              href={owner.phoneHref}
+              aria-label={`Позвонить по номеру ${owner.phone}`}
+              className="hover:text-coral transition-colors"
+            >
               {owner.phone}
             </a>
           </p>
           <p>
-            Email:{' '}
-            <a href={`mailto:${owner.email}`} className="hover:text-coral transition-colors">
+            <a
+              href={`mailto:${owner.email}`}
+              aria-label={`Написать на почту ${owner.email}`}
+              className="hover:text-coral transition-colors"
+            >
               {owner.email}
             </a>
           </p>
           <p>{owner.address}</p>
-        </div>
+        </address>
 
         {/* Навигация */}
-        <nav aria-label="Навигация в подвале">
-          <p className="font-semibold text-ink mb-3">Разделы</p>
+        <nav aria-label="Разделы сайта">
+          <p className="font-semibold text-ink mb-3" aria-hidden="true">Разделы</p>
           <ul className="grid grid-cols-2 gap-x-4 gap-y-2">
             {navLinks.map((link) => (
               <li key={link.href}>
@@ -64,7 +71,9 @@ export default function Footer() {
 
       {/* Копирайт */}
       <div className="border-t border-line py-4 text-xs text-center">
-        © {new Date().getFullYear()} {owner.shortName}. Все права защищены.
+        <span aria-label={`© ${new Date().getFullYear()} ${owner.shortName}. Все права защищены.`}>
+          © {new Date().getFullYear()} {owner.shortName}. Все права защищены.
+        </span>
       </div>
     </footer>
   );

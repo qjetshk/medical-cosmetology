@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
 import YandexMetrika from '@/components/YandexMetrika';
 import PageTransition from '@/components/PageTransition';
+import RouteAnnouncer from '@/components/RouteAnnouncer';
 
 const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
@@ -26,9 +27,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" className={manrope.variable}>
       <body className="font-sans bg-cream text-ink antialiased min-h-screen flex flex-col">
+        {/* Skip-link — первое в DOM, виден только при фокусе с клавиатуры */}
+        <a href="#main-content" className="skip-link">
+          Перейти к основному содержанию
+        </a>
+
+        <RouteAnnouncer />
         <Header />
         <PageTransition />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
         <CookieBanner />
         <YandexMetrika />

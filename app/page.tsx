@@ -16,7 +16,7 @@ export default function HomePage() {
         {/* Текст */}
         <div className="flex-1 min-w-0">
           <FadeIn>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-ink leading-tight mb-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[88px] font-bold text-ink leading-tight mb-6">
               Врачебная<br />косметология
             </h1>
           </FadeIn>

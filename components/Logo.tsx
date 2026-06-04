@@ -10,7 +10,7 @@ export default function Logo() {
     >
       <Image
         src="/svg/logo.svg"
-        alt="Врачебная косметология"
+        alt=""
         width={210}
         height={63}
         className="h-36 w-auto"

@@ -1,4 +1,8 @@
 @AGENTS.md
+## Рабочий процесс
+- После каждой значимой группы изменений напоминать пользователю сделать коммит (`/ship` или `git commit`).
+  Значимое = новая страница, новый компонент, рефактор, исправление бага, изменение дизайна.
+
 # Сайт косметолога (ИП). Next.js App Router + TS + Tailwind v4.
 
 ## Дизайн (соблюдать строго)
@@ -54,8 +58,7 @@
   политика и согласие на cookie, пользовательское соглашение. Всё — <a download> на PDF.
 
 ## Список роутов
-/  /services  /about  /license  /specialist  /medical-info
-/paid-services  /patient-rights  /supervisory  /vacancies  /legal
+/  /services  /about  /license  /specialist  /medical-info    /patient-rights  /supervisory  /vacancies  /legal
 
 ## Сайт референс:
 - https://estetika-meditsina.ru/ (не копировать в тупую просто посмотреть если не понимаешь что как организовать)

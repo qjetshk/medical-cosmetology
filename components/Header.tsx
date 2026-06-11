@@ -46,6 +46,18 @@ export default function Header() {
     return () => document.removeEventListener('keydown', onKey);
   }, [menuOpen]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  // Закрыть «···» дропдаун при клике/тапе вне него
+  useEffect(() => {
+    if (!moreOpen) return;
+    const onPointer = (e: PointerEvent) => {
+      if (moreRef.current && !moreRef.current.contains(e.target as Node)) {
+        setMoreOpen(false);
+      }
+    };
+    document.addEventListener('pointerdown', onPointer);
+    return () => document.removeEventListener('pointerdown', onPointer);
+  }, [moreOpen]);
+
   // Блокировать скролл страницы пока открыт drawer
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
@@ -131,8 +143,8 @@ export default function Header() {
             <div
               ref={moreRef}
               className="relative"
-              onMouseEnter={() => setMoreOpen(true)}
-              onMouseLeave={() => setMoreOpen(false)}
+              onPointerEnter={(e) => { if (e.pointerType === 'mouse') setMoreOpen(true); }}
+              onPointerLeave={(e) => { if (e.pointerType === 'mouse') setMoreOpen(false); }}
             >
               <button
                 onClick={() => setMoreOpen((v) => !v)}

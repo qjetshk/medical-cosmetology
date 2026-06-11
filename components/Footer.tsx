@@ -31,7 +31,8 @@ export default function Footer() {
               {owner.email}
             </a>
           </p>
-          <p>{owner.address}</p>
+          <p><span className="text-ink-muted/60 text-xs">Юр. адрес: </span>{owner.address}</p>
+          <p><span className="text-ink-muted/60 text-xs">Факт. адрес: </span>{owner.clinicAddress}</p>
         </address>
 
         {/* Навигация */}
@@ -64,6 +65,11 @@ export default function Footer() {
           <p>
             <Link href="/about" className="hover:text-coral underline underline-offset-2 transition-colors">
               Реквизиты организации
+            </Link>
+          </p>
+          <p>
+            <Link href="/license" className="hover:text-coral underline underline-offset-2 transition-colors">
+              Лицензия
             </Link>
           </p>
         </div>

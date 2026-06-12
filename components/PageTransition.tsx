@@ -2,19 +2,22 @@
 
 import { motion } from 'framer-motion';
 import { usePathname } from 'next/navigation';
+import { useState, useEffect } from 'react';
 
-/**
- * Рендерит полноэкранный overlay с backdrop-blur поверх всей страницы.
- * При смене маршрута overlay появляется (opacity 1) и растворяется (opacity 0).
- * pointer-events-none — клики проходят сквозь.
- * fixed + z-200 — покрывает хедер, футер и весь контент.
- */
 export default function PageTransition() {
   const pathname = usePathname();
+  const [key, setKey] = useState(0);
+
+  // Increment on every navigation including back/forward.
+  // key={pathname} breaks on A→B→A because React reuses the element
+  // (same key), so framer-motion never restarts the animation.
+  useEffect(() => {
+    setKey((k) => k + 1);
+  }, [pathname]);
 
   return (
     <motion.div
-      key={pathname}
+      key={key}
       aria-hidden="true"
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}

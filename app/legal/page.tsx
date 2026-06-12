@@ -46,12 +46,13 @@ function DocLink({ label, href }: { label: string; href?: string }) {
   return (
     <a
       href={href}
-      download
+      target="_blank"
+      rel="noopener noreferrer"
       className={`${base} border-line text-ink hover:border-coral hover:text-coral bg-cream`}
     >
       <DocIcon />
       {label}
-      <span className="ml-auto text-xs text-ink-muted">PDF ↓</span>
+      <span className="ml-auto text-xs text-ink-muted">PDF ↗</span>
     </a>
   );
 }
@@ -66,7 +67,7 @@ function ExternalLink({ href, label, sub }: { href: string; label: string; sub?:
       rel="noopener noreferrer"
       className="flex items-start gap-2.5 rounded-xl border border-line px-4 py-3 text-sm hover:border-sage hover:bg-sage-light/20 transition-colors group"
     >
-      <span className="mt-0.5 text-sage">
+      <span className="mt-0.75 text-sage">
         <ExtIcon />
       </span>
       <span>

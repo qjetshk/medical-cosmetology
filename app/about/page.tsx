@@ -60,6 +60,18 @@ export default function AboutPage() {
         ]}
       />
 
+      <div className="mt-10">
+        <InfoTable
+          caption="Банковские реквизиты"
+          rows={[
+            { label: 'Банк', value: owner.bank },
+            { label: 'БИК', value: owner.bik },
+            { label: 'Корреспондентский счёт', value: owner.ks },
+            { label: 'Расчётный счёт', value: owner.rs },
+          ]}
+        />
+      </div>
+
       <div className="mt-12">
         <h2 className="text-xl font-semibold text-ink mb-4">Схема проезда</h2>
         <div className="rounded-2xl overflow-hidden border border-line">

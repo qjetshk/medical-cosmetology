@@ -40,7 +40,7 @@ const prepGroups = [
   },
   {
     title: 'Инъекционные процедуры',
-    subtitle: 'Мезотерапия, биоревитализация, контурная пластика, плацентотерапия, коллагенотерапия',
+    subtitle: 'Мезотерапия, биоревитализация',
     items: [
       'За 2–3 дня: исключить алкоголь, сауну, солярий.',
       'По согласованию с лечащим врачом: отменить антикоагулянты и НПВС (аспирин, ибупрофен).',
@@ -189,10 +189,13 @@ export default function MedicalInfoPage() {
               Программа государственных гарантий — Минздрав России
             </a>
             <a
-              href="/legal#rights"
+              href="/docs/Памятка для граждан о гарантиях бесплатного оказания медицинской помощи.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              download
               className="inline-flex items-center gap-1.5 rounded-xl border border-line px-5 py-3 text-sm text-ink-muted hover:border-coral hover:text-coral transition-colors"
             >
-              Памятка о госгарантиях (PDF)
+              Памятка о госгарантиях — PDF ↗
             </a>
           </div>
         </FadeIn>

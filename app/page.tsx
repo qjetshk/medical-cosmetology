@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import FadeIn from '@/components/FadeIn';
 import { owner } from '@/data/owner';
-import { serviceCategories } from '@/data/services';
+import ServiceCategoryGrid from '@/components/ServiceCategoryGrid';
 
 export const metadata: Metadata = {
   title: 'Косметолог — ИП Мешанихина Е.В. | Челябинск',
@@ -105,24 +105,7 @@ export default function HomePage() {
               Полный спектр процедур — от классических уходов до современных инъекционных и аппаратных методик.
             </p>
           </FadeIn>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-            {serviceCategories.map((cat, i) => (
-              <FadeIn key={cat.title} delay={0.07 * i}>
-                <div className="bg-cream rounded-2xl border border-line p-6 h-full flex flex-col">
-                  <h3 className="font-semibold text-ink text-lg mb-2">{cat.title}</h3>
-                  <p className="text-sm text-ink-muted mb-4">{cat.description}</p>
-                  <ul className="space-y-1.5 mt-auto">
-                    {cat.items.map((item) => (
-                      <li key={item} className="text-sm text-ink-muted flex items-start gap-2">
-                        <span className="text-sage shrink-0 mt-0.5" aria-hidden="true">—</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+          <ServiceCategoryGrid className="mb-8" />
           <FadeIn delay={0.22}>
             <Link
               href="/services"

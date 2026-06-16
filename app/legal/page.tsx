@@ -134,10 +134,10 @@ export default function LegalPage() {
             note="Сведения об ИП, реквизиты, адрес, режим работы, структура управления."
           >
             <div className="grid gap-2 sm:grid-cols-2 mb-5">
-              <DocLink label="Информация о медицинской организации" />
-              <DocLink label="Информация о видах медицинской помощи" />
-              <DocLink label="Информация о возможности получения медицинской помощи в рамках ОМС" />
-              <DocLink label="Информация о правилах записи на первичный приём" />
+              <DocLink label="Информация о медицинской организации" href="/docs/Информация о медицинской организации.pdf" />
+              <DocLink label="Информация о видах медицинской помощи" href="/docs/Информация о видах медицинской помощи.pdf" />
+              <DocLink label="Информация о возможности получения медицинской помощи" href="/docs/Информация о возможности получения медицинской помощи.pdf" />
+              <DocLink label="Информация о правилах записи на первичный приём" href="/docs/Информация о правилах записи на первичный приём.pdf" />
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               <ExternalLink
@@ -163,15 +163,14 @@ export default function LegalPage() {
             note="Правила оказания платных медицинских услуг, прейскурант, информация о ценах."
           >
             <div className="grid gap-2 sm:grid-cols-2 mb-5">
-              <DocLink label="Правила предоставления платных медицинских услуг" />
-              <DocLink label="Прейскурант на медицинские услуги (прайс-лист)" />
-              <DocLink label="Памятка — как получить социальный налоговый вычет" />
+              <DocLink label="Прейскурант на медицинские услуги (прайс-лист)" href="/docs/Прейскурант на медицинские услуги.pdf" />
+              <DocLink label="Памятка — как получить социальный налоговый вычет" href="/docs/Памятка для пациентов как получить социальный вычет.pdf" />
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               <ExternalLink
-                href="https://www.consultant.ru/document/cons_doc_LAW_147652/"
-                label="ПП РФ № 736 на КонсультантПлюс"
-                sub="Текст постановления о платных услугах"
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=448474"
+                label="Правила предоставления платных медицинских услуг"
+                sub="ПП РФ № 736 — КонтурНорматив"
               />
               <ExternalLink
                 href="https://www.nalog.gov.ru/rn77/taxation/taxes/ndfl/nalog_vichet/soc_nv/soc_nv_m/"
@@ -191,9 +190,9 @@ export default function LegalPage() {
             note="Права пациентов, порядок обжалования, гарантии бесплатной медицинской помощи."
           >
             <div className="grid gap-2 sm:grid-cols-2 mb-5">
-              <DocLink label="Права и обязанности граждан в сфере охраны здоровья" />
-              <DocLink label="Порядок обжалования действий медицинского персонала" />
-              <DocLink label="Памятка о гарантиях бесплатного оказания медицинской помощи" />
+              <DocLink label="Права и обязанности граждан в сфере охраны здоровья" href="/docs/Информация о правах и обязанностях граждан в сфере здравоохранения.pdf" />
+              <DocLink label="Порядок обжалования действий медицинского персонала" href="/docs/Порядок обжалования действий (бездействий) медицинского персонала.pdf" />
+              <DocLink label="Памятка о гарантиях бесплатного оказания медицинской помощи" href="/docs/Памятка для граждан о гарантиях бесплатного оказания медицинской помощи.pdf" />
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               <ExternalLink
@@ -219,11 +218,11 @@ export default function LegalPage() {
             note="Правила подготовки к процедурам. Бланки согласий подписываются пациентом перед каждым вмешательством."
           >
             <div className="grid gap-2 sm:grid-cols-2">
-              <DocLink label="Правила подготовки к процедурам и исследованиям" />
-              <DocLink label="Сроки и порядок проведения диспансеризации" />
-              <DocLink label="Информация о страховых медицинских организациях" />
-              <DocLink label="Информированное добровольное согласие на вмешательство (бланк)" />
-              <DocLink label="Отказ от медицинского вмешательства (бланк)" />
+              <DocLink label="Правила подготовки к процедурам и исследованиям" href="/docs/Правила подготовки к диагностическим исследованиям.pdf" />
+              <DocLink label="Сроки и порядок проведения диспансеризации" href="/docs/Информация о сроках, порядке, результатах проводимой диспансеризации.pdf" />
+              <DocLink label="Информация о страховых медицинских организациях" href="/docs/Информация о страховых медицинских организациях, с которыми заключены договоры.pdf" />
+              <DocLink label="Информированное добровольное согласие на вмешательство (бланк)" href="/docs/ИДС.pdf" />
+              <DocLink label="Отказ от медицинского вмешательства (бланк)" href="/docs/Отказ от ИДС.pdf" />
             </div>
           </Section>
         </FadeIn>
@@ -236,7 +235,7 @@ export default function LegalPage() {
             title="Охрана труда"
           >
             <div className="grid gap-2 sm:grid-cols-2">
-              <DocLink label="Перечень мероприятий по улучшению условий и охраны труда" />
+              <DocLink label="Перечень мероприятий по улучшению условий и охраны труда" href="/docs/Перечень мероприятий по улучшению условий и охраны труда.pdf" />
             </div>
           </Section>
         </FadeIn>
@@ -250,7 +249,7 @@ export default function LegalPage() {
             note="Адреса и телефоны органов государственного контроля в сфере здравоохранения."
           >
             <div className="grid gap-2 sm:grid-cols-2 mb-5">
-              <DocLink label="Контакты надзорных органов" />
+              <DocLink label="Контакты надзорных органов" href="/docs/Информация об адресах и номерах телефонов органа государственной власти.pdf" />
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               <ExternalLink
@@ -276,8 +275,8 @@ export default function LegalPage() {
             note="Документы об обработке персональных данных в соответствии с ФЗ-152."
           >
             <div className="grid gap-2 sm:grid-cols-2 mb-5">
-              <DocLink label="Политика обработки персональных данных" />
-              <DocLink label="Согласие на обработку персональных данных (через сайт)" />
+              <DocLink label="Политика обработки персональных данных" href="/docs/Обработка персональных данных.pdf" />
+              <DocLink label="Согласие на обработку персональных данных (через сайт)" href="/docs/Согласие на обработку персональных данных (сайт).pdf" />
             </div>
             <div className="grid gap-2 sm:grid-cols-2">
               <ExternalLink
@@ -302,9 +301,9 @@ export default function LegalPage() {
             title="Cookie и рассылки"
           >
             <div className="grid gap-2 sm:grid-cols-2">
-              <DocLink label="Политика использования cookie" />
-              <DocLink label="Согласие на обработку cookie" />
-              <DocLink label="Согласие на получение рекламно-информационных рассылок" />
+              <DocLink label="Политика использования cookie" href="/docs/Политика использования cookie.pdf" />
+              <DocLink label="Согласие на обработку cookie" href="/docs/Согласие на обработку cookie.pdf" />
+              <DocLink label="Согласие на получение рекламно-информационных рассылок" href="/docs/Согласие на получение рекламно-информационных рассылок.pdf" />
             </div>
           </Section>
         </FadeIn>
@@ -318,7 +317,7 @@ export default function LegalPage() {
             note="Правила использования сайта ИП Мешанихина Е.В."
           >
             <div className="grid gap-2 sm:grid-cols-2">
-              <DocLink label="Пользовательское соглашение" />
+              <DocLink label="Пользовательское соглашение" href="/docs/Пользовательское соглашение.pdf" />
             </div>
           </Section>
         </FadeIn>

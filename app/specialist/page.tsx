@@ -134,8 +134,20 @@ export default function SpecialistPage() {
                 ]}
               />
               <a
-                href="/license"
+                href="/docs/Сведения о медицинских работниках.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                download
                 className="inline-flex items-center gap-1.5 mt-4 text-sm text-coral hover:opacity-80 transition-opacity"
+              >
+                Сведения о медицинском работнике (PDF)
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <path d="M2.5 6h7M7 3.5l2.5 2.5L7 8.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </a>
+              <a
+                href="/license"
+                className="inline-flex items-center gap-1.5 mt-2 text-sm text-coral hover:opacity-80 transition-opacity"
               >
                 Выписка из реестра лицензий
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">

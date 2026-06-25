@@ -163,6 +163,7 @@ export default function LegalPage() {
             note="Правила оказания платных медицинских услуг, прейскурант, информация о ценах."
           >
             <div className="grid gap-2 sm:grid-cols-2 mb-5">
+              <DocLink label="Положение о порядке оказания платных медицинских услуг" href="/docs/Положение о порядке оказания платных медицинских услуг.pdf" />
               <DocLink label="Прейскурант на медицинские услуги (прайс-лист)" href="/docs/Прейскурант на медицинские услуги.pdf" />
               <DocLink label="Памятка — как получить социальный налоговый вычет" href="/docs/Памятка для пациентов как получить социальный вычет.pdf" />
             </div>
@@ -194,22 +195,101 @@ export default function LegalPage() {
               <DocLink label="Порядок обжалования действий медицинского персонала" href="/docs/Порядок обжалования действий (бездействий) медицинского персонала.pdf" />
               <DocLink label="Памятка о гарантиях бесплатного оказания медицинской помощи" href="/docs/Памятка для граждан о гарантиях бесплатного оказания медицинской помощи.pdf" />
             </div>
+          </Section>
+        </FadeIn>
+
+        {/* ── 4. Нормативно-правовые акты ──────────────────────────────── */}
+        <FadeIn>
+          <Section
+            id="laws"
+            badge="НПА"
+            title="Нормативно-правовые акты"
+            note="Федеральные законы, постановления и приказы, регулирующие оказание медицинской помощи."
+          >
             <div className="grid gap-2 sm:grid-cols-2">
               <ExternalLink
-                href="https://www.consultant.ru/document/cons_doc_LAW_121895/"
-                label="ФЗ-323 на КонсультантПлюс"
-                sub="Об основах охраны здоровья граждан"
+                href="https://minzdrav.gov.ru/documents/7025-federalnyy-zakon-ot-21-noyabrya-2011-g-323-fz-ob-osnovah-ohrany-zdorovya-grazhdan-v-rossiyskoy-federatsii"
+                label="ФЗ-323 «Об основах охраны здоровья граждан»"
+                sub="от 21.11.2011 · Минздрав России"
               />
               <ExternalLink
-                href="https://www.rosminzdrav.ru/poleznye-resursy/programma-gosgarantiy"
-                label="Программа государственных гарантий"
-                sub="Минздрав России"
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=502750"
+                label="ФЗ-326 «Об обязательном медицинском страховании»"
+                sub="Актуальная редакция · КонтурНорматив"
+              />
+              <ExternalLink
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=504449"
+                label="Закон о защите прав потребителей"
+                sub="Актуальная редакция · КонтурНорматив"
+              />
+              <ExternalLink
+                href="http://government.ru/docs/all/147526/"
+                label="ПП РФ № 736 — Правила платных медицинских услуг"
+                sub="Постановление Правительства РФ · government.ru"
+              />
+              <ExternalLink
+                href="http://government.ru/docs/all/157366/"
+                label="Программа госгарантий на 2025–2027 гг. (ПП РФ № 1940)"
+                sub="от 27.12.2024 · government.ru"
+              />
+              <ExternalLink
+                href="http://foms74.ru/page/territorialnaya_programma_oms"
+                label="Территориальная программа госгарантий Челябинской обл."
+                sub="Постановление Правительства Чел. обл. от 19.12.2024 № 719-П · foms74.ru"
+              />
+              <ExternalLink
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=475217&ysclid=mhuyadchvf795970662"
+                label="Национальный календарь профилактических прививок"
+                sub="Приказ Минздрава № 1122н от 06.12.2021 · КонтурНорматив"
+              />
+              <ExternalLink
+                href="https://minzdrav.gov.ru/ministry/61/4/stranitsa-857/poryadki-okazaniya-meditsinskoy-pomoschi-naseleniyu-rossiyskoy-federatsii"
+                label="Порядки оказания медицинской помощи населению"
+                sub="Официальный сайт Минздрава России"
+              />
+              <ExternalLink
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=500961&ysclid=mhuyayunoz181150151"
+                label="Порядок первичной медико-санитарной помощи"
+                sub="Приказ Минздрава № 202н от 14.04.2025 · КонтурНорматив"
               />
             </div>
           </Section>
         </FadeIn>
 
-        {/* ── 4. Медицинские документы ─────────────────────────────────── */}
+        {/* ── 5. Лекарственное обеспечение ─────────────────────────────── */}
+        <FadeIn>
+          <Section
+            id="pharma"
+            badge="Лекарства"
+            title="Лекарственное обеспечение"
+            note="Перечни лекарственных препаратов, утверждённые Правительством РФ."
+          >
+            <div className="grid gap-2 sm:grid-cols-2">
+              <ExternalLink
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=491464&ysclid=mlifljg56j610801397"
+                label="ЖНВЛП"
+                sub="Жизненно необходимые и важнейшие лекарственные препараты · Распоряжение № 2406-р"
+              />
+              <ExternalLink
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=491464&ysclid=mlifljg56j610801397"
+                label="Препараты для льготников (орфанные заболевания)"
+                sub="Гемофилия, муковисцидоз, онкология, рассеянный склероз и др. · Распоряжение № 2406-р"
+              />
+              <ExternalLink
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=491464&ysclid=mlifljg56j610801397"
+                label="Препараты по решению врачебных комиссий"
+                sub="Назначаемые по решению ВК медицинских организаций · Распоряжение № 2406-р"
+              />
+              <ExternalLink
+                href="https://normativ.kontur.ru/document?moduleId=1&documentId=61472&ysclid=mlifm09wr7815207225"
+                label="Препараты бесплатно и со скидкой 50%"
+                sub="Отдельным группам населения при амбулаторном лечении · Постановление № 890"
+              />
+            </div>
+          </Section>
+        </FadeIn>
+
+        {/* ── 5. Медицинские документы ─────────────────────────────────── */}
         <FadeIn>
           <Section
             id="medical"

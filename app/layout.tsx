@@ -16,11 +16,20 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Косметолог — ИП Мешанихина Е.В.',
+    default: 'Врачебная косметология — ИП Мешанихина Е.В. | Челябинск',
     template: '%s | ИП Мешанихина Е.В.',
   },
   description:
     'Профессиональная косметология в Челябинске. Платные медицинские услуги по лицензии. ИП Мешанихина Елена Владимировна.',
+  openGraph: {
+    type: 'website',
+    locale: 'ru_RU',
+    siteName: 'Врачебная косметология — ИП Мешанихина Е.В.',
+    title: 'Врачебная косметология — ИП Мешанихина Е.В. | Челябинск',
+    description:
+      'Профессиональная косметология в Челябинске. Платные медицинские услуги по лицензии.',
+  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

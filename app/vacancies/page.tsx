@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Вакансии',
-  description: 'Информация о вакантных должностях.',
+  description: 'Сведения о вакантных должностях ИП Мешанихина Е.В. Вакансии отсутствуют.',
 };
 
 export default function VacanciesPage() {

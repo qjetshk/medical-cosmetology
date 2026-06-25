@@ -4,7 +4,7 @@ import FadeIn from '@/components/FadeIn';
 import { owner } from '@/data/owner';
 
 export const metadata: Metadata = {
-  title: 'Специалист — ИП Мешанихина Е.В.',
+  title: 'Специалист',
   description:
     'Мешанихина Елена Владимировна — врач-косметолог. Образование, аккредитация, график приёма.',
 };

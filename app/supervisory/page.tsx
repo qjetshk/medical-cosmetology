@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 
 export const metadata: Metadata = {
-  title: 'Контрольные органы — ИП Мешанихина Е.В.',
+  title: 'Контрольные органы',
   description:
     'Контакты территориальных органов Росздравнадзора и Роспотребнадзора по Челябинской области.',
 };

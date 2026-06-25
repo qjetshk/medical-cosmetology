@@ -3,8 +3,8 @@ import FadeIn from '@/components/FadeIn';
 import ServiceCategoryGrid from '@/components/ServiceCategoryGrid';
 
 export const metadata: Metadata = {
-  title: 'Услуги — ИП Мешанихина Е.В.',
-  description: 'Перечень косметологических услуг: уходы, пилинги, инъекции, контурная пластика. Цены по прейскуранту.',
+  title: 'Услуги',
+  description: 'Перечень косметологических услуг: уходы, пилинги, мезотерапия, биоревитализация. Цены по прейскуранту.',
 };
 
 export default function ServicesPage() {

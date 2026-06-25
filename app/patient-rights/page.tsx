@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 
 export const metadata: Metadata = {
-  title: 'Права пациентов — ИП Мешанихина Е.В.',
+  title: 'Права пациентов',
   description:
     'Права и обязанности граждан в сфере охраны здоровья по ФЗ-323. Правила поведения пациента по ПП РФ №736.',
 };

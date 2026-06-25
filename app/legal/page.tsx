@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import FadeIn from '@/components/FadeIn';
 
 export const metadata: Metadata = {
-  title: 'Документы — ИП Мешанихина Е.В.',
+  title: 'Документы',
   description:
     'Нормативные и правовые документы: политика обработки персональных данных, пользовательское соглашение, правила платных услуг, права пациентов.',
 };

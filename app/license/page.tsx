@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/data/site';
 import InfoTable from '@/components/InfoTable';
 import { owner } from '@/data/owner';
 
-export const metadata: Metadata = {
-  title: 'Лицензия',
-  description: 'Медицинская лицензия: номер, дата выдачи, орган выдачи. ИП Мешанихина Е.В.',
-};
+export const metadata = pageMetadata(
+  '/license',
+  'Лицензия',
+  'Медицинская лицензия: номер, дата выдачи, орган выдачи. ИП Мешанихина Е.В.',
+);
 
 export default function LicensePage() {
   return (

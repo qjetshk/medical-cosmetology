@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/data/site';
 import FadeIn from '@/components/FadeIn';
 
-export const metadata: Metadata = {
-  title: 'Контрольные органы',
-  description:
-    'Контакты территориальных органов Росздравнадзора и Роспотребнадзора по Челябинской области.',
-};
+export const metadata = pageMetadata(
+  '/supervisory',
+  'Контрольные органы',
+  'Контакты территориальных органов Росздравнадзора и Роспотребнадзора по Челябинской области.',
+);
 
 const bodies = [
   {

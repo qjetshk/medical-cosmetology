@@ -4,9 +4,10 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CookieBanner from '@/components/CookieBanner';
-import YandexMetrika from '@/components/YandexMetrika';
 import PageTransition from '@/components/PageTransition';
 import RouteAnnouncer from '@/components/RouteAnnouncer';
+import { owner } from '@/data/owner';
+import { homeTitle, siteUrl } from '@/data/site';
 
 const manrope = Manrope({
   subsets: ['latin', 'cyrillic'],
@@ -15,22 +16,21 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: 'Врачебная косметология — ИП Мешанихина Е.В. | Челябинск',
-    template: '%s | ИП Мешанихина Е.В.',
+    default: homeTitle,
+    template: `%s | ${owner.shortName}`,
   },
-  description:
-    'Профессиональная косметология в Челябинске. Платные медицинские услуги по лицензии. ИП Мешанихина Елена Владимировна.',
-  openGraph: {
-    type: 'website',
-    locale: 'ru_RU',
-    siteName: 'Врачебная косметология — ИП Мешанихина Е.В.',
-    title: 'Врачебная косметология — ИП Мешанихина Е.В. | Челябинск',
-    description:
-      'Профессиональная косметология в Челябинске. Платные медицинские услуги по лицензии.',
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION?.trim() || undefined,
+    yandex: process.env.YANDEX_SITE_VERIFICATION?.trim() || undefined,
   },
-  robots: { index: true, follow: true },
 };
+
+const configuredCounterId = Number(process.env.YANDEX_METRIKA_ID);
+const counterId = Number.isSafeInteger(configuredCounterId) && configuredCounterId > 0
+  ? configuredCounterId
+  : undefined;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -48,8 +48,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <Footer />
-        <CookieBanner />
-        <YandexMetrika />
+        <CookieBanner counterId={counterId} />
       </body>
     </html>
   );

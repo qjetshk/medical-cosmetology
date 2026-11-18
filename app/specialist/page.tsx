@@ -1,13 +1,13 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/data/site';
 import InfoTable from '@/components/InfoTable';
 import FadeIn from '@/components/FadeIn';
 import { owner } from '@/data/owner';
 
-export const metadata: Metadata = {
-  title: 'Специалист',
-  description:
-    'Мешанихина Елена Владимировна — врач-косметолог. Образование, аккредитация, график приёма.',
-};
+export const metadata = pageMetadata(
+  '/specialist',
+  'Врач-косметолог в Челябинске',
+  'Мешанихина Елена Владимировна — врач-косметолог. Образование, аккредитация, график приёма.',
+);
 
 export default function SpecialistPage() {
   return (

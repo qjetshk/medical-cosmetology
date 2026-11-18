@@ -13,6 +13,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 ENV NEXT_TELEMETRY_DISABLED=1
+ARG YANDEX_METRIKA_ID
+ARG GOOGLE_SITE_VERIFICATION
+ARG YANDEX_SITE_VERIFICATION
 RUN npm run build
 
 # ── runner: minimal production image ─────────────────────────────────────────

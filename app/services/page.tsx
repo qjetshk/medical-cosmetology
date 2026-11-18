@@ -1,11 +1,12 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/data/site';
 import FadeIn from '@/components/FadeIn';
 import ServiceCategoryGrid from '@/components/ServiceCategoryGrid';
 
-export const metadata: Metadata = {
-  title: 'Услуги',
-  description: 'Перечень косметологических услуг: уходы, пилинги, мезотерапия, биоревитализация. Цены по прейскуранту.',
-};
+export const metadata = pageMetadata(
+  '/services',
+  'Услуги и цены в Челябинске',
+  'Перечень косметологических услуг: уходы, пилинги, мезотерапия, биоревитализация. Цены по прейскуранту.',
+);
 
 export default function ServicesPage() {
   return (

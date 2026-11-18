@@ -1,9 +1,10 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/data/site';
 
-export const metadata: Metadata = {
-  title: 'Вакансии',
-  description: 'Сведения о вакантных должностях ИП Мешанихина Е.В. Вакансии отсутствуют.',
-};
+export const metadata = pageMetadata(
+  '/vacancies',
+  'Вакансии',
+  'Сведения о вакантных должностях ИП Мешанихина Е.В. Вакансии отсутствуют.',
+);
 
 export default function VacanciesPage() {
   return (

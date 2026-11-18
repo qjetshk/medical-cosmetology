@@ -1,5 +1,19 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+## Продвижение и аналитика
+
+Канонический адрес – `https://vrach-cosm.ru`. Next.js публикует `/robots.txt` и `/sitemap.xml`.
+
+| Переменная сборки | Значение |
+| --- | --- |
+| `YANDEX_METRIKA_ID` | Номер счётчика Яндекс Метрики. Создай цель типа «Целевое событие» с идентификатором `phone_click`. Она фиксирует нажатия на телефон записи. |
+| `GOOGLE_SITE_VERIFICATION` | Значение `content` из метатега Google Search Console. Для HTML-тега выбирай ресурс с префиксом URL `https://vrach-cosm.ru/`. |
+| `YANDEX_SITE_VERIFICATION` | Значение `content` из метатега подтверждения Яндекс Вебмастера. |
+
+Для локального запуска укажи значения в `.env.local`. При сборке Docker передай каждое значение как `--build-arg ИМЯ=значение`. Страницы генерируются при сборке, поэтому после изменения значений пересобери образ. Все три значения публикуются на сайте.
+
+После выкладки проверь метатеги в `<head>` главной, подтверди права в обоих кабинетах и отправь `https://vrach-cosm.ru/sitemap.xml`. Для проверки Метрики открой сайт с `?_ym_debug=2`, прими аналитические cookie, перейди на другую страницу и нажми кнопку записи. Проверь просмотр и событие `phone_click` в отладчике Метрики.
+
 ## Getting Started
 
 First, run the development server:

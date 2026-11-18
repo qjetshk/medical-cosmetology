@@ -1,12 +1,12 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/data/site';
 import FadeIn from '@/components/FadeIn';
 import { owner } from '@/data/owner';
 
-export const metadata: Metadata = {
-  title: 'Информация для пациентов',
-  description:
-    'Виды медицинской помощи, правила записи на приём, подготовка к процедурам, государственные гарантии.',
-};
+export const metadata = pageMetadata(
+  '/medical-info',
+  'Информация для пациентов',
+  'Виды медицинской помощи, правила записи на приём, подготовка к процедурам, государственные гарантии.',
+);
 
 const appointmentSteps = [
   {

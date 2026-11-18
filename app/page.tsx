@@ -1,15 +1,15 @@
-import type { Metadata } from 'next';
+import { homeTitle, pageMetadata } from '@/data/site';
 import Image from 'next/image';
 import Link from 'next/link';
 import FadeIn from '@/components/FadeIn';
 import { owner } from '@/data/owner';
 import ServiceCategoryGrid from '@/components/ServiceCategoryGrid';
 
-export const metadata: Metadata = {
-  title: { absolute: 'Врачебная косметология — ИП Мешанихина Е.В. | Челябинск' },
-  description:
-    'Врачебная косметология в Челябинске. Чистки, пилинги, мезотерапия, биоревитализация. Платные медицинские услуги по лицензии. Запись на приём по телефону.',
-};
+export const metadata = pageMetadata(
+  '/',
+  homeTitle,
+  'Врачебная косметология в Челябинске. Чистки, пилинги, мезотерапия, биоревитализация. Платные медицинские услуги по лицензии. Запись на приём по телефону.',
+);
 
 const advantages = [
   'Лицензированная медицинская деятельность',

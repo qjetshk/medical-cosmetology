@@ -1,12 +1,13 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/data/site';
 import Link from 'next/link';
 import InfoTable from '@/components/InfoTable';
 import { owner } from '@/data/owner';
 
-export const metadata: Metadata = {
-  title: 'О клинике',
-  description: 'Информация об организации: реквизиты, адрес, режим работы. ИП Мешанихина Е.В.',
-};
+export const metadata = pageMetadata(
+  '/about',
+  'О клинике',
+  'Информация об организации: реквизиты, адрес, режим работы. ИП Мешанихина Е.В.',
+);
 
 export default function AboutPage() {
   return (

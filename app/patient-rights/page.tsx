@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
+import { pageMetadata } from '@/data/site';
 import FadeIn from '@/components/FadeIn';
 
-export const metadata: Metadata = {
-  title: 'Права пациентов',
-  description:
-    'Права и обязанности граждан в сфере охраны здоровья по ФЗ-323. Правила поведения пациента по ПП РФ №736.',
-};
+export const metadata = pageMetadata(
+  '/patient-rights',
+  'Права пациентов',
+  'Права и обязанности граждан в сфере охраны здоровья по ФЗ-323. Правила поведения пациента по ПП РФ №736.',
+);
 
 const rights = [
   {

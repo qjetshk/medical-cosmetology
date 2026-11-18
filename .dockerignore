@@ -2,5 +2,9 @@
 .next
 node_modules
 docss
+pp
+research
+.codex
 *.pdf
+!public/docs/*.pdf
 .env*
